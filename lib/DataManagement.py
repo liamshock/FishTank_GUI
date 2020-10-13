@@ -9,6 +9,9 @@ import h5py
 import os
 import sys
 
+# thomas was here
+import cv2
+
 
 
 # ----- Section 1: loading data ---- #
@@ -200,10 +203,15 @@ class SplitdataManager(object):
 
             # first get the number of frames in this folder by examining frameCropType array shape
             folder = splitdata_folder[0] # XZ, XY or YZ - doesn't matter, we just want to find the number of frames
-            info_path = os.path.join(folder, 'info.h5')
-            with h5py.File(info_path, 'r') as hf:
-                splitdata_frameCropType = hf['frameCropType'][:]
-                splitdata_numFrames = splitdata_frameCropType.shape[0]
+
+            # thomas was here
+            video_capture = cv2.VideoCapture(folder + '.mp4')
+            splitdata_numFrames = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT))
+            video_capture.release()
+            # info_path = os.path.join(folder + '.mp4')
+            # with h5py.File(info_path, 'r') as hf:
+            #     splitdata_frameCropType = hf['frameCropType'][:]
+            #     splitdata_numFrames = splitdata_frameCropType.shape[0]
 
             # now get the frame indices
             splitdata_start = running_total_idx
@@ -217,13 +225,13 @@ class SplitdataManager(object):
         return start_stop_frames_for_splitdata
 
 
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
 class Calibration(object):
     ''' A class for loading and using the calibrations for the cameras
 
