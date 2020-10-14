@@ -24,6 +24,8 @@ pip install sidecar
 
 pip install scipy
 
+pip install -U scikit-learn==0.20.1
+
 pip install sklearn
 
 # installing jupyter widgets
