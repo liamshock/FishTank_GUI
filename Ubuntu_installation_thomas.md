@@ -1,7 +1,7 @@
 # create and activate virtual python environment
-python3 -m venv <name>
+python3 -m venv name
   
-source <name>/bin/activate
+source name/bin/activate
 
 # install python packages
 pip install jupyterlab
