@@ -1,0 +1,7 @@
+# don't track any slurm output files
+*.out
+*.err
+
+# don't track any ipython checkpoints or pycaches
+.ipynb_checkpoints
+__pycache__
